@@ -1,0 +1,17 @@
+---
+- name: Enable Moka repo
+  apt_repository:
+    repo: ppa:snwh/ppa
+  become: yes
+  when: graphical and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+
+- name: Install Moka icons
+  apt:
+    update_cache: yes
+    state: present
+    name:
+      - moka-icon-theme
+      - faba-icon-theme
+      - faba-mono-icons
+  become: yes
+  when: graphical and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')

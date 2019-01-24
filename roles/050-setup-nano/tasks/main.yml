@@ -1,0 +1,39 @@
+# Install nano
+- name: Install nano(apt)
+  apt:
+    name: nano
+    state: latest
+    update_cache: yes
+    upgrade: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  become: yes
+
+- name: Install nano (yum)
+  yum:
+    name: nano
+    state: latest
+    update_cache: yes
+    upgrade: yes
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  become: yes
+
+- name: Install nano (pacman)
+  pacman:
+    name: nano
+    state: latest
+    update_cache: yes
+    upgrade: yes
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  become: yes
+
+- name: Clone zshrcs
+  git:
+    repo: https://github.com/scopatz/nanorc.git
+    dest: ~/.nano
+    depth: 1
+
+- name: Copy zshrc
+  copy:
+    src: ./zshrc
+    dest: ~/.zshrc
+    mode: 0644

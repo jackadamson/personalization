@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    graphical: False
+  roles:
+    - 005-setup
+    - 010-setup-zsh
+    - 050-setup-nano

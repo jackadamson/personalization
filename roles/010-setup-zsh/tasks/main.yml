@@ -1,0 +1,52 @@
+---
+# Install ZSH and git
+- name: Install ZSH and git(apt)
+  apt:
+    name:
+      - zsh
+      - git
+    state: latest
+    update_cache: yes
+    upgrade: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  become: yes
+
+- name: Install ZSH (yum)
+  yum:
+    name:
+      - zsh
+      - git
+    state: latest
+    update_cache: yes
+    upgrade: yes
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  become: yes
+
+- name: Install ZSH (pacman)
+  pacman:
+    name:
+      - zsh
+      - git
+    state: latest
+    update_cache: yes
+    upgrade: yes
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  become: yes
+
+- name: Clone Oh My Zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: ~/.oh-my-zsh
+    depth: 1
+
+  - name: Create .zshrc
+    copy:
+      dest: ~/.zshrc
+      content: |
+        export ZSH="$HOME/.oh-my-zsh"
+        export PATH="$HOME/.local/bin:$PATH"
+        ZSH_THEME="jreese"
+        plugins=(git)
+        DISABLE_AUTO_UPDATE="true"
+        source $ZSH/oh-my-zsh.sh
+

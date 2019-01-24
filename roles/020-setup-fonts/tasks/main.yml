@@ -1,0 +1,21 @@
+---
+# Install powerline fonts
+- name: Clone powerline fonts
+  git:
+    repo: https://github.com/powerline/fonts.git
+    dest: "{{ tempdir.path }}/fonts"
+    depth: 1
+  when: graphical
+
+
+- name: Run powerline font install
+  command: bash {{ tempdir.path }}/fonts/install.sh
+  args:
+    chdir: "{{ tempdir.path }}/fonts"
+  when: graphical
+
+- name: Clean powerline font directory
+  file:
+    state: absent
+    path: "{{ tempdir.path }}/fonts/"
+  when: graphical

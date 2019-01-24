@@ -1,0 +1,23 @@
+---
+- name: Copy dconf preferences (debian/ubuntu)
+  copy:
+    src: ./dconf-settings-deb.ini
+    dest: /usr/share/dconf-settings.ini
+    mode: 0644
+  become: yes
+  when: graphical and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  register: dconfd
+
+- name: Copy dconf preferences
+  copy:
+    src: ./dconf-settings-deb.ini
+    dest: /usr/share/dconf-settings.ini
+    mode: 0644
+  become: yes
+  when: graphical and dconfd is skipped
+  register: dconfd
+
+
+- name: Apply dconf preferences
+    shell: dbus-launch dconf load / < /usr/share/dconf-settings.ini
+    when: dconfd

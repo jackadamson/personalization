@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    graphical: True
+  roles:
+    - 005-setup
+    - 010-setup-zsh
+    - 020-setup-fonts
+    - 030-install-theme
+    - 040-setup-dconf
+    - 050-setup-nano
