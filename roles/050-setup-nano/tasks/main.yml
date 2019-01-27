@@ -32,8 +32,8 @@
     dest: ~/.nano
     depth: 1
 
-- name: Copy zshrc
+- name: Copy nanorc
   copy:
-    src: ./zshrc
-    dest: ~/.zshrc
+    src: ./nanorc
+    dest: ~/.nanorc
     mode: 0644

@@ -1,10 +1,10 @@
 set tabsize 4
 set tabstospaces
+set nowrap
 include "~/.nano/rust.nanorc"
 include "~/.nano/python.nanorc"
 include "~/.nano/c.nanorc"
 include "~/.nano/conf.nanorc"
-include "~/.nano/hcl.nanorc"
 include "~/.nano/ini.nanorc"
 include "~/.nano/json.nanorc"
 include "~/.nano/nginx.nanorc"
