@@ -1,6 +1,6 @@
 ---
-- hosts: localhost
-  gather_facts: no
+- hosts: all
+  gather_facts: yes
   vars:
     graphical: False
   roles:
