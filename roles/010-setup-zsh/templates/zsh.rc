@@ -1,0 +1,13 @@
+export ZSH="$HOME/.oh-my-zsh"
+export PATH="$HOME/.local/bin:$PATH"
+alias qq="{{ package_install_command }}"
+ZSH_THEME="jreese"
+plugins=(
+  git
+  docker
+  docker-compose
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+DISABLE_AUTO_UPDATE="true"
+source $ZSH/oh-my-zsh.sh

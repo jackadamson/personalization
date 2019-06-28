@@ -20,7 +20,7 @@
     name: nano
     state: latest
     update_cache: yes
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_distribution == 'Archlinux'
   become: yes
 
 - name: Clone zshrcs
