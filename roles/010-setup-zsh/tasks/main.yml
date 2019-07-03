@@ -28,7 +28,7 @@
 - name: Set Package Install Command(yum)
   set_fact:
     package_install_command: "sudo yum install"
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Install ZSH (pacman)
   become: yes

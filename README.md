@@ -1,4 +1,6 @@
 # Linux System Personalization
+
+
 ## Usage (CLI System)
 ```bash
 pip install -r requirements.txt
@@ -16,7 +18,6 @@ ansible-playbook graphical.yaml
 ```
 
 ## Current Features
-
 - Setup powerline fonts
 - Install oh my zsh
 - Setup nano syntax highlighting and tabs to spaces

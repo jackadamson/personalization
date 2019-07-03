@@ -1,6 +1,12 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
+
+# Quick install package command
 alias qq="{{ package_install_command }}"
+
+# Pull all repos in current directory (depth 1)
+alias pullall="find -maxdepth 1 -type d -path './*' -exec git -C '{}' pull \;"
+
 ZSH_THEME="jreese"
 plugins=(
   git
@@ -9,5 +15,6 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
+
 DISABLE_AUTO_UPDATE="true"
 source $ZSH/oh-my-zsh.sh
