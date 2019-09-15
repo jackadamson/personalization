@@ -7,6 +7,9 @@ alias qq="{{ package_install_command }}"
 # Pull all repos in current directory (depth 1)
 alias pullall="find -maxdepth 1 -type d -path './*' -exec git -C '{}' pull \;"
 
+# Activate the python virtual environment in the current repos ./venv directory
+alias activate="source ./venv/bin/activate"
+
 ZSH_THEME="jreese"
 plugins=(
   git
