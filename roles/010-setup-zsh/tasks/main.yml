@@ -7,12 +7,12 @@
       - git
     state: latest
     update_cache: yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == 'Kali'
 
 - name: Set Package Install Command(apt)
   set_fact:
     package_install_command: "sudo apt install"
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == 'Kali'
 
 - name: Install ZSH (yum)
   become: yes
