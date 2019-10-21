@@ -6,7 +6,6 @@
       - zsh
       - git
     state: latest
-    update_cache: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == 'Kali GNU/Linux'
 
 - name: Set Package Install Command(apt)
@@ -21,8 +20,6 @@
       - zsh
       - git
     state: latest
-    update_cache: yes
-    upgrade: yes
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Set Package Install Command(yum)
@@ -37,8 +34,6 @@
       - zsh
       - git
     state: latest
-    update_cache: yes
-    upgrade: yes
   when: ansible_distribution == 'Archlinux'
 
 
@@ -53,19 +48,25 @@
     dest: ~/.oh-my-zsh
     depth: 1
 
-- name: Clone zsh autosugestions
+- name: Clone Powerlevel9k
+  git:
+    repo: https://github.com/bhilburn/powerlevel9k.git
+    dest: ~/.oh-my-zsh/custom/themes/powerlevel9k
+    depth: 1
+
+- name: Clone ZSH autosugestions
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
     dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     depth: 1
 
-- name: Clone zsh syntax highlighting
+- name: Clone ZSH syntax highlighting
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
     dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     depth: 1
 
-- name: Create .zshrc
+- name: Create ~/.zshrc
   template:
     dest: ~/.zshrc
     src: zsh.rc

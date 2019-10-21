@@ -1,17 +1,24 @@
 ---
-- name: Enable Moka repo
-  apt_repository:
-    repo: ppa:snwh/ppa
-  become: yes
-  when: graphical and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+- name: Create Icons Folder
+  file:
+    path: ~/.icons
+    state: directory
+    mode: '0755'
 
-- name: Install Moka icons
-  apt:
-    update_cache: yes
-    state: present
-    name:
-      - moka-icon-theme
-      - faba-icon-theme
-      - faba-mono-icons
-  become: yes
-  when: graphical and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+- name: Install Candy Icons
+  git:
+    repo: https://github.com/EliverLara/candy-icons.git
+    dest: ~/.icons/candy-icons
+    depth: 1
+  when: graphical
+
+- name: Create Themes Folder
+  file:
+    path: ~/.themes
+    state: directory
+    mode: '0755'
+
+- name: Install Sweet Dark
+  unarchive:
+    src: Sweet-Dark.tar.xz
+    dest: ~/.themes

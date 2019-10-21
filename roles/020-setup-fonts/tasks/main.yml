@@ -7,7 +7,6 @@
     depth: 1
   when: graphical
 
-
 - name: Run powerline font install
   command: bash {{ tempdir.path }}/fonts/install.sh
   args:

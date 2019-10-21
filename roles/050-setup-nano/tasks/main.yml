@@ -3,7 +3,6 @@
   apt:
     name: nano
     state: latest
-    update_cache: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   become: yes
 
@@ -11,7 +10,6 @@
   yum:
     name: nano
     state: latest
-    update_cache: yes
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   become: yes
 
@@ -19,17 +17,16 @@
   pacman:
     name: nano
     state: latest
-    update_cache: yes
   when: ansible_distribution == 'Archlinux'
   become: yes
 
-- name: Clone zshrcs
+- name: Clone nanorc repo
   git:
     repo: https://github.com/scopatz/nanorc.git
     dest: ~/.nano
     depth: 1
 
-- name: Copy nanorc
+- name: Copy ~/.nanorc
   copy:
     src: ./nanorc
     dest: ~/.nanorc

@@ -10,7 +10,25 @@ alias pullall="find -maxdepth 1 -type d -path './*' -exec git -C '{}' pull \;"
 # Activate the python virtual environment in the current repos ./venv directory
 alias activate="source ./venv/bin/activate"
 
-ZSH_THEME="jreese"
+# Different prompt color for different hosts
+export HOST_COLOR="005"
+
+export ZSH_THEME="powerlevel9k/powerlevel9k"
+export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs virtualenv)
+export POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
+export POWERLEVEL9K_CONTEXT_TEMPLATE="%m"
+export POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND=${HOST_COLOR}
+export POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND=${HOST_COLOR}
+export POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=${HOST_COLOR}
+export POWERLEVEL9K_DIR_HOME_BACKGROUND=${HOST_COLOR}
+export POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=${HOST_COLOR}
+export POWERLEVEL9K_DIR_ETC_BACKGROUND=${HOST_COLOR}
+export DEFAULT_USER='{{ username_on_the_host.stdout }}'
+export P9KGT_BACKGROUND='dark'
+export P9KGT_COLORS='dark'
+
 plugins=(
   git
   docker

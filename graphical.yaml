@@ -1,12 +1,13 @@
 ---
-- hosts: localhost
+- hosts: all
   gather_facts: yes
   vars:
     graphical: True
   roles:
     - 005-setup
-    - 010-setup-zsh
+    #- 010-setup-zsh
     - 020-setup-fonts
     - 030-install-theme
     - 040-setup-dconf
     - 050-setup-nano
+    - 060-copy-useful-commands
