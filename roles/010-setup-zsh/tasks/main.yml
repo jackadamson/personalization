@@ -6,12 +6,13 @@
       - zsh
       - git
     state: latest
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == 'Kali GNU/Linux'
+    update_cache: yes
+  when: ansible_pkg_mgr == 'apt'
 
 - name: Set Package Install Command(apt)
   set_fact:
     package_install_command: "sudo apt install"
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == 'Kali GNU/Linux'
+  when: ansible_pkg_mgr == 'apt'
 
 - name: Install ZSH (yum)
   become: yes
@@ -20,12 +21,14 @@
       - zsh
       - git
     state: latest
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+    update_cache: yes
+    upgrade: yes
+  when: ansible_pkg_mgr == 'yum'
 
 - name: Set Package Install Command(yum)
   set_fact:
     package_install_command: "sudo yum install"
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_pkg_mgr == 'yum'
 
 - name: Install ZSH (pacman)
   become: yes
