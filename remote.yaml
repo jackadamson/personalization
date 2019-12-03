@@ -6,5 +6,6 @@
   roles:
     - 005-setup
     - 010-setup-zsh
+    - 020-setup-fonts
     - 050-setup-nano
     - 060-copy-useful-commands
