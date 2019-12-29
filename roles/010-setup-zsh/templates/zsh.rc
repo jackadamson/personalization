@@ -14,7 +14,7 @@ alias activate="source ./venv/bin/activate"
 alias ipy="~/.venv/bin/ipython"
 
 # Different prompt color for different hosts
-export HOST_COLOR="005"
+export HOST_COLOR="{{host_color}}"
 
 export ZSH_THEME="powerlevel9k/powerlevel9k"
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1

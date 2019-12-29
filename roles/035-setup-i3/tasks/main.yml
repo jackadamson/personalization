@@ -9,7 +9,9 @@
   package:
     name:
       - i3-gaps
-      - compton
+      - ttf-font-awesome
+      - i3blocks
+      - picom
       - rofi
       - dmenu
     state: latest
@@ -18,7 +20,28 @@
   become: yes
   command: "pikaur -S i3lock-fancy-git --noconfirm"
 
+- name: Create wallpapers directory
+  file:
+    path: ~/.wallpapers
+    state: directory
+
+- name: Download wallpaper
+  get_url:
+    url: https://unsplash.com/photos/mpWPcRT9D1E/download
+    dest: ~/.wallpapers/sunset.jpg
+
+- name: Clone i3blocks contrib
+  git:
+    repo: https://github.com/vivien/i3blocks-contrib.git
+    dest: ~/.i3blocks
+    depth: 1
+
 - name: Copy i3 config
   template:
     dest: ~/.config/i3/config
-    src: i3config.cfg
+    src: i3config.conf
+
+- name: Copy i3blocks config
+  template:
+    dest: ~/.config/i3/i3blocks.conf
+    src: i3blocks.conf

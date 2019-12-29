@@ -1,0 +1,28 @@
+[global_config]
+  geometry_hinting = True
+  title_font = Meslo LG S for Powerline 12
+  title_use_system_font = False
+[keybindings]
+  go_next = <Primary><Shift><Alt>n
+  new_window = <Primary><Shift>n
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#2c2c2c"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Meslo LG S DZ for Powerline 12
+    foreground_color = "#ffffff"
+    palette = "#2e3436:#fa2573:#a6e32d:#fc951e:#c48dff:#fa2573:#67d9f0:#f2f2f2:#555753:#fa2573:#8ae234:#fce94f:#729fcf:#fa2573:#34e2e2:#eeeeec"
+    scrollback_lines = 1000
+    show_titlebar = False
+    use_system_font = False
