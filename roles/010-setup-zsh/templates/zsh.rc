@@ -10,6 +10,9 @@ alias pullall="find -maxdepth 1 -type d -path './*' -exec git -C '{}' pull \;"
 # Activate the python virtual environment in the current repos ./venv directory
 alias activate="source ./venv/bin/activate"
 
+# Ipython in virtualenv with lots of handy packages installed
+alias ipy="~/.venv/bin/ipython"
+
 # Different prompt color for different hosts
 export HOST_COLOR="005"
 

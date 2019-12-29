@@ -3,21 +3,21 @@
   apt:
     name: nano
     state: latest
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: ansible_pkg_mgr == 'apt'
   become: yes
 
 - name: Install nano (yum)
   yum:
     name: nano
     state: latest
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_pkg_mgr == 'yum'
   become: yes
 
 - name: Install nano (pacman)
   pacman:
     name: nano
     state: latest
-  when: ansible_distribution == 'Archlinux'
+  when: ansible_pkg_mgr == 'pacman'
   become: yes
 
 - name: Clone nanorc repo

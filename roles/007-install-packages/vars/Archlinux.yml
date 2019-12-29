@@ -1,0 +1,6 @@
+system_packages:
+  - zsh
+  - git
+  - nano
+  - powerline-fonts
+

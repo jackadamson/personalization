@@ -1,12 +1,10 @@
 ---
 - hosts: all
   gather_facts: yes
-  vars_files:
-  - vars/personal.yml
   vars:
     graphical: False
   roles:
   - 005-setup
   - 010-setup-zsh
+  - 020-setup-fonts
   - 050-setup-nano
-  - 060-dev-setup

@@ -1,49 +1,18 @@
 ---
-- name: Install ZSH and git(apt)
-  become: yes
-  apt:
-    name:
-      - zsh
-      - git
-    state: latest
-    update_cache: yes
-  when: ansible_pkg_mgr == 'apt'
-
 - name: Set Package Install Command(apt)
   set_fact:
     package_install_command: "sudo apt install"
   when: ansible_pkg_mgr == 'apt'
-
-- name: Install ZSH (yum)
-  become: yes
-  yum:
-    name:
-      - zsh
-      - git
-    state: latest
-    update_cache: yes
-    upgrade: yes
-  when: ansible_pkg_mgr == 'yum'
 
 - name: Set Package Install Command(yum)
   set_fact:
     package_install_command: "sudo yum install"
   when: ansible_pkg_mgr == 'yum'
 
-- name: Install ZSH (pacman)
-  become: yes
-  pacman:
-    name:
-      - zsh
-      - git
-    state: latest
-  when: ansible_distribution == 'Archlinux'
-
-
 - name: Set Package Install Command(pacman)
   set_fact:
     package_install_command: "sudo pacman -S"
-  when: ansible_distribution == 'Archlinux'
+  when: ansible_pkg_mgr == 'pacman'
 
 - name: Clone Oh My Zsh
   git:

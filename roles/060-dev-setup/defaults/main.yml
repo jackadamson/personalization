@@ -1,0 +1,16 @@
+pip_packages: [ipython, black]
+venv_pip_packages:
+  - docker
+  - docker-compose
+  - ipython
+  - jsonschema
+  - matplotlib
+  - munch
+  - numpy
+  - paramiko
+  - pycryptodome
+  - PyYAML
+  - toml
+  - tqdm
+git_email: jack@mrfluffybunny.com
+git_name: Jack Adamson

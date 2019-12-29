@@ -1,0 +1,39 @@
+# Git
+- name: Configure Git Email
+  template:
+    dest: ~/.gitconfig
+    src: gitconfig.j2
+
+- name: Create git ignore file
+  template:
+    dest: ~/.gitignore
+    src: gitignore.j2
+
+# Useful Scripts
+- name: Create ~/.local/bin
+  file:
+    path: ~/.local/bin
+    state: directory
+    mode: '0755'
+
+- name: Copy ipa script
+  copy:
+    src: ipa.py
+    dest: ~/.local/bin/ipa
+    mode: '0755'
+
+- name: Copy simplehttp script
+  copy:
+    src: simplehttp.py
+    dest: ~/.local/bin/simplehttp
+    mode: '0755'
+
+- name: Install pip packages
+  pip:
+    name: "{{pip_packages}}"
+    extra_args: --user
+
+- name: Install venv pip packages
+  pip:
+    name: "{{venv_pip_packages}}"
+    virtualenv: ~/.venv

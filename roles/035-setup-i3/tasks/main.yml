@@ -1,0 +1,24 @@
+- name: Assert is arch
+  assert:
+    that: ansible_pkg_mgr == 'pacman'
+    fail_msg: "i3 setup from this playbook currently only supports archlinux"
+
+
+- name: Install i3 and related packages
+  become: yes
+  package:
+    name:
+      - i3-gaps
+      - compton
+      - rofi
+      - dmenu
+    state: latest
+
+- name: Install AUR packages
+  become: yes
+  command: "pikaur -S i3lock-fancy-git --noconfirm"
+
+- name: Copy i3 config
+  template:
+    dest: ~/.config/i3/config
+    src: i3config.cfg

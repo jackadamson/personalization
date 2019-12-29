@@ -1,24 +1,25 @@
 ---
-- name: Create Icons Folder
-  file:
-    path: ~/.icons
-    state: directory
-    mode: '0755'
+- name: Install materia-gtk-theme
+  package:
+    name: materia-gtk-theme
+    state: latest
+  become: yes
 
-- name: Install Candy Icons
-  git:
-    repo: https://github.com/EliverLara/candy-icons.git
-    dest: ~/.icons/candy-icons
-    depth: 1
-  when: graphical
+- name: Add moka PPA
+  apt_repository:
+    repo: ppa:snwh/ppa
+  when: ansible_distribution == 'Ubuntu'
 
-- name: Create Themes Folder
-  file:
-    path: ~/.themes
-    state: directory
-    mode: '0755'
+- name: Install moka icons (apt)
+  apt:
+    name:
+      - moka-icon-theme
+      - faba-icon-theme
+    state: latest
+  when: ansible_pkg_mgr == 'apt'
+  become: yes
 
-- name: Install Sweet Dark
-  unarchive:
-    src: Sweet-Dark.tar.xz
-    dest: ~/.themes
+- name: Install moka icons (pikaur)
+  become: yes
+  command: "pikaur -S moka-icon-theme-git faba-icon-theme-git --noconfirm"
+  when: ansible_pkg_mgr == 'pacman'

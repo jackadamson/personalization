@@ -14,12 +14,14 @@ ansible-playbook remote.yaml
 pip install -r requirements.txt
 # if debian or ubuntu
 sudo apt install python-apt
-ansible-playbook graphical.yaml
+ansible-playbook gnome.yaml
 ```
 
 ## Current Features
+
 - Setup powerline fonts
 - Install oh my zsh
 - Setup nano syntax highlighting and tabs to spaces
 - Installs gnome themes and icon sets
 - Makes several usability tweaks to gnome
+- And much much more...

@@ -4,7 +4,7 @@
     src: "./dconf-settings-deb.ini"
     dest: "{{ tempdir.path }}/dconf-settings.ini"
     mode: 0644
-  when: graphical and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  when: graphical and (ansible_pkg_mgr == 'apt')
   register: dconfd
 
 - name: Copy dconf preferences (arch)

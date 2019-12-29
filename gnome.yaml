@@ -4,9 +4,13 @@
   vars_files:
   - vars/personal.yml
   vars:
-    graphical: False
+    graphical: True
   roles:
   - 005-setup
+  - 007-install-packages
   - 010-setup-zsh
+  - 020-setup-fonts
+  - 030-install-theme
+  - 040-setup-dconf
   - 050-setup-nano
   - 060-dev-setup
