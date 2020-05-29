@@ -9,6 +9,7 @@
   apt_repository:
     repo: ppa:snwh/ppa
   when: ansible_distribution == 'Ubuntu'
+  become: yes
 
 - name: Install moka icons (apt)
   apt:
