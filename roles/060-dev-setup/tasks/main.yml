@@ -28,11 +28,6 @@
     dest: ~/.local/bin/simplehttp
     mode: '0755'
 
-- name: Install pip packages
-  pip:
-    name: "{{pip_packages}}"
-    extra_args: --user
-
 - name: Install venv pip packages
   pip:
     name: "{{venv_pip_packages}}"

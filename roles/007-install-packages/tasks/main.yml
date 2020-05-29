@@ -6,6 +6,7 @@
     - "../vars/default.yml"
 
 - name: Install system packages
+  become: yes
   package:
     state: latest
     name: "{{ system_packages }}"

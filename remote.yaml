@@ -1,12 +1,29 @@
 ---
 - hosts: all
   gather_facts: yes
+  vars:
+    graphical: False
+    pip_package: python3-pip
+  roles:
+  - 005-setup
+  - 007-install-packages
+
+- hosts: all
+  vars:
+    pip_package: python3-pip
+  become: yes
+  roles:
+  - geerlingguy.pip
+  - geerlingguy.docker
+
+- hosts: all
+  gather_facts: yes
   vars_files:
   - vars/personal.yml
   vars:
     graphical: False
+    pip_package: python3-pip
   roles:
-  - 005-setup
   - 010-setup-zsh
   - 050-setup-nano
   - 060-dev-setup
