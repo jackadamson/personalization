@@ -6,8 +6,11 @@
 2. Pick one of the playbooks from below
 3. Create an inventory called hosts.ini if using on a remote machine, else use local.ini
 See: https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
-4. Run the playbook with
+4. Customize vars/personal.yml if you're not Jack
+5. Run the playbook with
+
 Local usage:
+
 ```
 ansible-playbook --ask-become-pass -i local.ini PLAYBOOK
 ```
@@ -37,19 +40,19 @@ Only CLI configuration, no gnome themeing
 Only CLI configuration, no gnome themeing and less opinionated customizations
 
 
-## Usage (CLI System)
+## Example Usage (CLI System)
 ```bash
-pip install -r requirements.txt
 # if debian or ubuntu
-sudo apt install python-apt
+sudo apt install python-apt python-pip
+pip3 install -r requirements.txt
 ansible-playbook remote.yaml
 ```
 
-## Usage (Gnome System)
+## Example Usage (Gnome System)
 ```bash
-pip install -r requirements.txt
 # if debian or ubuntu
-sudo apt install python-apt
+sudo apt install python-apt python-pip
+pip install -r requirements.txt
 ansible-playbook gnome.yaml
 ```
 
